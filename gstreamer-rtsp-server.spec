@@ -2,7 +2,7 @@ Summary:	GstRTCP - an RTSP server built on top of GStreamer
 Summary(pl.UTF-8):	GstRTSP - serwer RTSP zbudowany w oparciu o GStreamera
 Name:		gstreamer-rtsp-server
 Version:	1.2.3
-Release:	1
+Release:	2
 License:	LGPL v2+
 Group:		Libraries
 Source0:	http://gstreamer.freedesktop.org/src/gst-rtsp-server/gst-rtsp-server-%{version}.tar.xz
@@ -53,6 +53,9 @@ Pliki nagłówkowe biblioteki GstRTSPserver.
 Summary:	API documentation for GstRTSPserver library
 Summary(pl.UTF-8):	Dokumentacja API biblioteki GstRTSPserver
 Group:		Documentation
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description apidocs
 API documentation for GstRTSPserver library.
