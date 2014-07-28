@@ -1,19 +1,21 @@
+%define		gst_ver		1.4.0
+%define		gstpb_ver	1.4.0
 Summary:	GstRTCP - an RTSP server built on top of GStreamer
 Summary(pl.UTF-8):	GstRTSP - serwer RTSP zbudowany w oparciu o GStreamera
 Name:		gstreamer-rtsp-server
-Version:	1.2.3
-Release:	2
+Version:	1.4.0
+Release:	1
 License:	LGPL v2+
 Group:		Libraries
 Source0:	http://gstreamer.freedesktop.org/src/gst-rtsp-server/gst-rtsp-server-%{version}.tar.xz
-# Source0-md5:	239f805e755deb388162e957fcffff1d
+# Source0-md5:	974af05dbf867cade89b8d3101e3f197
 URL:		http://gstreamer.net/
 BuildRequires:	autoconf >= 2.62
 BuildRequires:	automake >= 1:1.11
 BuildRequires:	glib2-devel >= 1:2.32.0
 BuildRequires:	gobject-introspection-devel >= 1.31.1
-BuildRequires:	gstreamer-devel >= 1.2.3
-BuildRequires:	gstreamer-plugins-base-devel >= 1.2.3
+BuildRequires:	gstreamer-devel >= %{gst_ver}
+BuildRequires:	gstreamer-plugins-base-devel >= %{gstpb_ver}
 BuildRequires:	gtk-doc >= 1.12
 BuildRequires:	libcgroup-devel >= 0.26
 BuildRequires:	libtool
@@ -21,8 +23,8 @@ BuildRequires:	pkgconfig
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 Requires:	glib2 >= 1:2.32.0
-Requires:	gstreamer >= 1.2.3
-Requires:	gstreamer-plugins-base >= 1.2.3
+Requires:	gstreamer >= %{gst_ver}
+Requires:	gstreamer-plugins-base >= %{gstpb_ver}
 Requires:	libcgroup >= 0.26
 Obsoletes:	gstreamer-rtsp < 1.1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -39,8 +41,8 @@ Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki GstRTSPserver
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	glib2-devel >= 1:2.32.0
-Requires:	gstreamer-devel >= 1.2.3
-Requires:	gstreamer-plugins-base-devel >= 1.2.3
+Requires:	gstreamer-devel >= %{gst_ver}
+Requires:	gstreamer-plugins-base-devel >= %{gstpb_ver}
 Obsoletes:	gstreamer-rtsp-devel < 1.1
 
 %description devel
@@ -97,7 +99,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS NEWS README TODO docs/design/gst-rtp-server-design
+%doc AUTHORS ChangeLog NEWS README RELEASE TODO docs/design/gst-rtp-server-design
 %attr(755,root,root) %{_libdir}/libgstrtspserver-1.0.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libgstrtspserver-1.0.so.0
 %{_libdir}/girepository-1.0/GstRtspServer-1.0.typelib
