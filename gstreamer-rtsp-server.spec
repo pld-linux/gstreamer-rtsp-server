@@ -1,16 +1,16 @@
-%define		gst_ver		1.6.0
-%define		gstpb_ver	1.6.0
-%define		gstpg_ver	1.6.0
-%define		gstpd_ver	1.6.0
+%define		gst_ver		1.6.1
+%define		gstpb_ver	1.6.1
+%define		gstpg_ver	1.6.1
+%define		gstpd_ver	1.6.1
 Summary:	GstRTCP - an RTSP server built on top of GStreamer
 Summary(pl.UTF-8):	GstRTSP - serwer RTSP zbudowany w oparciu o GStreamera
 Name:		gstreamer-rtsp-server
-Version:	1.6.0
+Version:	1.6.1
 Release:	1
 License:	LGPL v2+
 Group:		Libraries
 Source0:	http://gstreamer.freedesktop.org/src/gst-rtsp-server/gst-rtsp-server-%{version}.tar.xz
-# Source0-md5:	c8162f67c184663c1e1aa3ce872ef1e3
+# Source0-md5:	fbb67bb9375ae483fcffe6390bcfbefb
 URL:		http://gstreamer.net/
 BuildRequires:	autoconf >= 2.69
 BuildRequires:	automake >= 1:1.14
