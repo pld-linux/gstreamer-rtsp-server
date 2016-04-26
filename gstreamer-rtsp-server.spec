@@ -31,7 +31,7 @@ BuildRequires:	xz
 Requires:	glib2 >= 1:2.40.0
 Requires:	gstreamer >= %{gst_ver}
 Requires:	gstreamer-plugins-base >= %{gstpb_ver}
-Requires:	libcgroup >= 0.26
+Requires:	libcgroup-libs >= 0.26
 Obsoletes:	gstreamer-rtsp < 1.1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
