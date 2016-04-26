@@ -1,20 +1,20 @@
-%define		gst_ver		1.6.2
-%define		gstpb_ver	1.6.2
-%define		gstpg_ver	1.6.2
-%define		gstpd_ver	1.6.2
+%define		gst_ver		1.8.0
+%define		gstpb_ver	1.8.0
+%define		gstpg_ver	1.8.0
+%define		gstpd_ver	1.8.0
 Summary:	GstRTCP - an RTSP server built on top of GStreamer
 Summary(pl.UTF-8):	GstRTSP - serwer RTSP zbudowany w oparciu o GStreamera
 Name:		gstreamer-rtsp-server
-Version:	1.6.2
+Version:	1.8.1
 Release:	1
 License:	LGPL v2+
 Group:		Libraries
-Source0:	http://gstreamer.freedesktop.org/src/gst-rtsp-server/gst-rtsp-server-%{version}.tar.xz
-# Source0-md5:	a1cafefb5fc14ac5d7e7d8cdbdfa9694
-URL:		http://gstreamer.net/
+Source0:	https://gstreamer.freedesktop.org/src/gst-rtsp-server/gst-rtsp-server-%{version}.tar.xz
+# Source0-md5:	0a5966df7f3d74cccfcededdcacd8212
+URL:		https://gstreamer.freedesktop.org/
 BuildRequires:	autoconf >= 2.69
 BuildRequires:	automake >= 1:1.14
-BuildRequires:	glib2-devel >= 1:2.32.0
+BuildRequires:	glib2-devel >= 1:2.40.0
 BuildRequires:	gobject-introspection-devel >= 1.31.1
 BuildRequires:	gstreamer-devel >= %{gst_ver}
 # only for message
@@ -28,7 +28,7 @@ BuildRequires:	libtool >= 2:2.2.6
 BuildRequires:	pkgconfig >= 1:0.9.0
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
-Requires:	glib2 >= 1:2.32.0
+Requires:	glib2 >= 1:2.40.0
 Requires:	gstreamer >= %{gst_ver}
 Requires:	gstreamer-plugins-base >= %{gstpb_ver}
 Requires:	libcgroup >= 0.26
@@ -46,7 +46,7 @@ Summary:	Header files for GstRTSPserver library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki GstRTSPserver
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	glib2-devel >= 1:2.32.0
+Requires:	glib2-devel >= 1:2.40.0
 Requires:	gstreamer-devel >= %{gst_ver}
 Requires:	gstreamer-plugins-base-devel >= %{gstpb_ver}
 Obsoletes:	gstreamer-rtsp-devel < 1.1
@@ -96,6 +96,8 @@ rm -rf $RPM_BUILD_ROOT
 
 # obsoleted by pkg-config
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/lib*.la
+# glib-loadable module
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/gstreamer-1.0/libgstrtspclientsink.la
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -109,6 +111,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libgstrtspserver-1.0.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libgstrtspserver-1.0.so.0
 %{_libdir}/girepository-1.0/GstRtspServer-1.0.typelib
+%attr(755,root,root) %{_libdir}/gstreamer-1.0/libgstrtspclientsink.so
 
 %files devel
 %defattr(644,root,root,755)
