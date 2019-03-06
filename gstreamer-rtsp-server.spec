@@ -1,7 +1,7 @@
-%define		gst_ver		1.14.0
-%define		gstpb_ver	1.14.0
-%define		gstpg_ver	1.14.0
-%define		gstpd_ver	1.14.0
+%define		gst_ver		1.14.4
+%define		gstpb_ver	1.14.4
+%define		gstpg_ver	1.14.4
+%define		gstpd_ver	1.14.4
 Summary:	GstRTCP - an RTSP server built on top of GStreamer
 Summary(pl.UTF-8):	GstRTSP - serwer RTSP zbudowany w oparciu o GStreamera
 Name:		gstreamer-rtsp-server
