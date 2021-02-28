@@ -61,9 +61,7 @@ Pliki nagłówkowe biblioteki GstRTSPserver.
 Summary:	API documentation for GstRTSPserver library
 Summary(pl.UTF-8):	Dokumentacja API biblioteki GstRTSPserver
 Group:		Documentation
-%if "%{_rpmversion}" >= "5"
 BuildArch:	noarch
-%endif
 
 %description apidocs
 API documentation for GstRTSPserver library.
