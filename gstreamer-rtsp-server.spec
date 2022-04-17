@@ -2,21 +2,21 @@
 # Conditional build:
 %bcond_without	apidocs	# API documentation
 
-%define		gst_ver		1.19.3
-%define		gstpb_ver	1.19.3
-%define		gstpg_ver	1.19.3
-%define		gstpd_ver	1.19.3
+%define		gst_ver		1.20.0
+%define		gstpb_ver	1.20.0
+%define		gstpg_ver	1.20.0
+%define		gstpd_ver	1.20.0
 Summary:	GstRTCP - an RTSP server built on top of GStreamer
 Summary(pl.UTF-8):	GstRTSP - serwer RTSP zbudowany w oparciu o GStreamera
 Name:		gstreamer-rtsp-server
-Version:	1.19.3
+Version:	1.20.1
 Release:	1
 License:	LGPL v2+
 Group:		Libraries
 Source0:	https://gstreamer.freedesktop.org/src/gst-rtsp-server/gst-rtsp-server-%{version}.tar.xz
-# Source0-md5:	5509776092921dd79ea2c02151dc69ba
+# Source0-md5:	5c70a34878d8b37d3335f3aa9fd39ae0
 URL:		https://gstreamer.freedesktop.org/
-BuildRequires:	glib2-devel >= 1:2.44.0
+BuildRequires:	glib2-devel >= 1:2.56.0
 BuildRequires:	gobject-introspection-devel >= 1.31.1
 BuildRequires:	gstreamer-devel >= %{gst_ver}
 # only for message
@@ -25,18 +25,18 @@ BuildRequires:	gstreamer-plugins-base-devel >= %{gstpb_ver}
 # only for message
 #BuildRequires:	gstreamer-plugins-good-devel >= %{gstpg_ver}
 %{?with_apidocs:BuildRequires:	hotdoc >= 0.11.0}
-BuildRequires:	libcgroup-devel >= 0.26
-BuildRequires:	meson >= 0.48
+# for test-cgroups example
+#BuildRequires:	libcgroup-devel >= 0.26
+BuildRequires:	meson >= 0.59
 BuildRequires:	ninja >= 1.5
 BuildRequires:	pkgconfig >= 1:0.9.0
 BuildRequires:	rpm-build >= 4.6
 BuildRequires:	rpmbuild(macros) >= 1.736
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
-Requires:	glib2 >= 1:2.44.0
+Requires:	glib2 >= 1:2.56.0
 Requires:	gstreamer >= %{gst_ver}
 Requires:	gstreamer-plugins-base >= %{gstpb_ver}
-Requires:	libcgroup-libs >= 0.26
 Obsoletes:	gstreamer-rtsp < 1.1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -51,7 +51,7 @@ Summary:	Header files for GstRTSPserver library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki GstRTSPserver
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	glib2-devel >= 1:2.44.0
+Requires:	glib2-devel >= 1:2.56.0
 Requires:	gstreamer-devel >= %{gst_ver}
 Requires:	gstreamer-plugins-base-devel >= %{gstpb_ver}
 Obsoletes:	gstreamer-rtsp-devel < 1.1
