@@ -2,21 +2,21 @@
 # Conditional build:
 %bcond_without	apidocs	# API documentation
 
-%define		gst_ver		1.20.0
-%define		gstpb_ver	1.20.0
-%define		gstpg_ver	1.20.0
-%define		gstpd_ver	1.20.0
+%define		gst_ver		1.22.0
+%define		gstpb_ver	1.22.0
+%define		gstpg_ver	1.22.0
+%define		gstpd_ver	1.22.0
 Summary:	GstRTCP - an RTSP server built on top of GStreamer
 Summary(pl.UTF-8):	GstRTSP - serwer RTSP zbudowany w oparciu o GStreamera
 Name:		gstreamer-rtsp-server
-Version:	1.20.5
+Version:	1.22.2
 Release:	1
 License:	LGPL v2+
 Group:		Libraries
 Source0:	https://gstreamer.freedesktop.org/src/gst-rtsp-server/gst-rtsp-server-%{version}.tar.xz
-# Source0-md5:	76a11c0f96027330c185054f5fd01f8b
+# Source0-md5:	c72aa7fa0ea7ab948f2efdd1a30041c3
 URL:		https://gstreamer.freedesktop.org/
-BuildRequires:	glib2-devel >= 1:2.56.0
+BuildRequires:	glib2-devel >= 1:2.62.0
 BuildRequires:	gobject-introspection-devel >= 1.31.1
 BuildRequires:	gstreamer-devel >= %{gst_ver}
 # only for message
@@ -27,14 +27,14 @@ BuildRequires:	gstreamer-plugins-base-devel >= %{gstpb_ver}
 %{?with_apidocs:BuildRequires:	hotdoc >= 0.11.0}
 # for test-cgroups example
 #BuildRequires:	libcgroup-devel >= 0.26
-BuildRequires:	meson >= 0.59
+BuildRequires:	meson >= 0.62
 BuildRequires:	ninja >= 1.5
 BuildRequires:	pkgconfig >= 1:0.9.0
 BuildRequires:	rpm-build >= 4.6
 BuildRequires:	rpmbuild(macros) >= 1.736
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
-Requires:	glib2 >= 1:2.56.0
+Requires:	glib2 >= 1:2.62.0
 Requires:	gstreamer >= %{gst_ver}
 Requires:	gstreamer-plugins-base >= %{gstpb_ver}
 Obsoletes:	gstreamer-rtsp < 1.1
@@ -51,7 +51,7 @@ Summary:	Header files for GstRTSPserver library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki GstRTSPserver
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	glib2-devel >= 1:2.56.0
+Requires:	glib2-devel >= 1:2.62.0
 Requires:	gstreamer-devel >= %{gst_ver}
 Requires:	gstreamer-plugins-base-devel >= %{gstpb_ver}
 Obsoletes:	gstreamer-rtsp-devel < 1.1
