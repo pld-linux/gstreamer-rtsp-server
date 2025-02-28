@@ -9,12 +9,12 @@
 Summary:	GstRTCP - an RTSP server built on top of GStreamer
 Summary(pl.UTF-8):	GstRTSP - serwer RTSP zbudowany w oparciu o GStreamera
 Name:		gstreamer-rtsp-server
-Version:	1.24.8
+Version:	1.24.12
 Release:	1
 License:	LGPL v2+
 Group:		Libraries
 Source0:	https://gstreamer.freedesktop.org/src/gst-rtsp-server/gst-rtsp-server-%{version}.tar.xz
-# Source0-md5:	19589e03b49d5c27fd184ca15e9311f2
+# Source0-md5:	437691f14f9f205a779e955aa5f6cd45
 URL:		https://gstreamer.freedesktop.org/
 BuildRequires:	glib2-devel >= 1:2.67.4
 BuildRequires:	gobject-introspection-devel >= 1.31.1
@@ -31,7 +31,7 @@ BuildRequires:	meson >= 1.1
 BuildRequires:	ninja >= 1.5
 BuildRequires:	pkgconfig >= 1:0.9.0
 BuildRequires:	rpm-build >= 4.6
-BuildRequires:	rpmbuild(macros) >= 1.736
+BuildRequires:	rpmbuild(macros) >= 2.042
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 Requires:	glib2 >= 1:2.67.4
@@ -78,11 +78,11 @@ Dokumentacja API biblioteki GstRTSPserver.
 %setup -q -n gst-rtsp-server-%{version}
 
 %build
-%meson build \
+%meson \
 	--default-library=shared \
 	%{!?with_apidocs:-Ddoc=false}
 
-%ninja_build -C build
+%meson_build
 
 %if %{with apidocs}
 cd build/docs
@@ -94,7 +94,7 @@ done
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%ninja_install -C build
+%meson_install
 
 %if %{with apidocs}
 install -d $RPM_BUILD_ROOT%{_docdir}/gstreamer-%{gstmver}
