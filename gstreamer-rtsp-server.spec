@@ -2,19 +2,19 @@
 # Conditional build:
 %bcond_without	apidocs	# API documentation
 
-%define		gst_ver		1.24.0
-%define		gstpb_ver	1.24.0
-%define		gstpg_ver	1.24.0
-%define		gstpd_ver	1.24.0
+%define		gst_ver		1.26.0
+%define		gstpb_ver	1.26.0
+%define		gstpg_ver	1.26.0
+%define		gstpd_ver	1.26.0
 Summary:	GstRTCP - an RTSP server built on top of GStreamer
 Summary(pl.UTF-8):	GstRTSP - serwer RTSP zbudowany w oparciu o GStreamera
 Name:		gstreamer-rtsp-server
-Version:	1.24.12
+Version:	1.26.0
 Release:	1
 License:	LGPL v2+
 Group:		Libraries
 Source0:	https://gstreamer.freedesktop.org/src/gst-rtsp-server/gst-rtsp-server-%{version}.tar.xz
-# Source0-md5:	437691f14f9f205a779e955aa5f6cd45
+# Source0-md5:	1a31472b32dafadd37db762cbb97f06f
 URL:		https://gstreamer.freedesktop.org/
 BuildRequires:	glib2-devel >= 1:2.67.4
 BuildRequires:	gobject-introspection-devel >= 1.31.1
@@ -27,7 +27,7 @@ BuildRequires:	gstreamer-plugins-base-devel >= %{gstpb_ver}
 %{?with_apidocs:BuildRequires:	hotdoc >= 0.11.0}
 # for test-cgroups example
 #BuildRequires:	libcgroup-devel >= 0.26
-BuildRequires:	meson >= 1.1
+BuildRequires:	meson >= 1.4
 BuildRequires:	ninja >= 1.5
 BuildRequires:	pkgconfig >= 1:0.9.0
 BuildRequires:	rpm-build >= 4.6
@@ -80,11 +80,20 @@ Dokumentacja API biblioteki GstRTSPserver.
 %build
 %meson \
 	--default-library=shared \
-	%{!?with_apidocs:-Ddoc=false}
+	-Ddoc=%{__enabled_disabled apidocs} \
+	-Dexamples=disabled \
+	-Dglib_assert=false \
+	-Dglib_checks=false \
+	-Dglib_debug=disabled \
+	-Dintrospection=enabled \
+	-Drtspclientsink=enabled \
+	-Dtests=disabled
 
 %meson_build
 
 %if %{with apidocs}
+%meson_build build-gst-hotdoc-configs build-hotdoc-configs
+
 cd build/docs
 for component_dir in gst-rtsp-server-doc plugin-rtspclientsink ; do
 	LC_ALL=C.UTF-8 hotdoc run --conf-file ${component_dir}.json
