@@ -2,19 +2,19 @@
 # Conditional build:
 %bcond_without	apidocs	# API documentation
 
-%define		gst_ver		1.26.0
-%define		gstpb_ver	1.26.0
-%define		gstpg_ver	1.26.0
-%define		gstpd_ver	1.26.0
+%define		gst_ver		1.28.0
+%define		gstpb_ver	1.28.0
+%define		gstpg_ver	1.28.0
+%define		gstpd_ver	1.28.0
 Summary:	GstRTCP - an RTSP server built on top of GStreamer
 Summary(pl.UTF-8):	GstRTSP - serwer RTSP zbudowany w oparciu o GStreamera
 Name:		gstreamer-rtsp-server
-Version:	1.26.8
+Version:	1.28.5
 Release:	1
 License:	LGPL v2+
 Group:		Libraries
 Source0:	https://gstreamer.freedesktop.org/src/gst-rtsp-server/gst-rtsp-server-%{version}.tar.xz
-# Source0-md5:	fe05ed240d5dd27c437545606c6653e8
+# Source0-md5:	49637e63ad20823897a75966dc008653
 URL:		https://gstreamer.freedesktop.org/
 BuildRequires:	glib2-devel >= 1:2.67.4
 BuildRequires:	gobject-introspection-devel >= 1.31.1
@@ -118,16 +118,16 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS ChangeLog NEWS README RELEASE TODO docs/design/gst-rtp-server-design
-%attr(755,root,root) %{_libdir}/libgstrtspserver-1.0.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libgstrtspserver-1.0.so.0
+%doc AUTHORS ChangeLog README.md RELEASE TODO docs/design/gst-rtp-server-design
+%{_libdir}/libgstrtspserver-1.0.so.*.*.*
+%ghost %{_libdir}/libgstrtspserver-1.0.so.0
 %{_libdir}/girepository-1.0/GstRtspServer-1.0.typelib
-%attr(755,root,root) %{_libdir}/gstreamer-1.0/libgstrtspclientsink.so
+%{_libdir}/gstreamer-1.0/libgstrtspclientsink.so
 
 %files devel
 %defattr(644,root,root,755)
 %doc docs/README
-%attr(755,root,root) %{_libdir}/libgstrtspserver-1.0.so
+%{_libdir}/libgstrtspserver-1.0.so
 %{_includedir}/gstreamer-1.0/gst/rtsp-server
 %{_pkgconfigdir}/gstreamer-rtsp-server-1.0.pc
 %{_datadir}/gir-1.0/GstRtspServer-1.0.gir
