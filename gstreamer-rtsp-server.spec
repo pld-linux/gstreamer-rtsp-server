@@ -9,12 +9,12 @@
 Summary:	GstRTCP - an RTSP server built on top of GStreamer
 Summary(pl.UTF-8):	GstRTSP - serwer RTSP zbudowany w oparciu o GStreamera
 Name:		gstreamer-rtsp-server
-Version:	1.28.5
+Version:	1.28.9
 Release:	1
 License:	LGPL v2+
 Group:		Libraries
 Source0:	https://gstreamer.freedesktop.org/src/gst-rtsp-server/gst-rtsp-server-%{version}.tar.xz
-# Source0-md5:	49637e63ad20823897a75966dc008653
+# Source0-md5:	57523c875dd13ab830973e3ccaffe19d
 URL:		https://gstreamer.freedesktop.org/
 BuildRequires:	glib2-devel >= 1:2.67.4
 BuildRequires:	gobject-introspection-devel >= 1.31.1
@@ -34,9 +34,9 @@ BuildRequires:	rpm-build >= 4.6
 BuildRequires:	rpmbuild(macros) >= 2.042
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
-Requires:	glib2 >= 1:2.67.4
-Requires:	gstreamer >= %{gst_ver}
-Requires:	gstreamer-plugins-base >= %{gstpb_ver}
+Requires:	glib2%{?_isa} >= 1:2.67.4
+Requires:	gstreamer%{?_isa} >= %{gst_ver}
+Requires:	gstreamer-plugins-base%{?_isa} >= %{gstpb_ver}
 Obsoletes:	gstreamer-rtsp < 1.1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -50,10 +50,10 @@ GstRTSP to serwer RTSP zbudowany w oparciu o GStreamera.
 Summary:	Header files for GstRTSPserver library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki GstRTSPserver
 Group:		Development/Libraries
-Requires:	%{name} = %{version}-%{release}
-Requires:	glib2-devel >= 1:2.67.4
-Requires:	gstreamer-devel >= %{gst_ver}
-Requires:	gstreamer-plugins-base-devel >= %{gstpb_ver}
+Requires:	%{name}%{?_isa} = %{version}-%{release}
+Requires:	glib2-devel%{?_isa} >= 1:2.67.4
+Requires:	gstreamer-devel%{?_isa} >= %{gst_ver}
+Requires:	gstreamer-plugins-base-devel%{?_isa} >= %{gstpb_ver}
 Obsoletes:	gstreamer-rtsp-devel < 1.1
 
 %description devel
